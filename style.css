@@ -11,12 +11,10 @@ body {
 }
 
 .logoContainer{
-    padding-top: 5rem;
-    height: 15vh;
+    height: 20vh;
 }
-h2{
-    margin: 0;
-    font-size: 4rem;
+.logoContainer img {
+    height: 20vh;
 }
 
 form{
@@ -24,9 +22,17 @@ form{
     display: grid;
     grid-template: 1fr 1fr / repeat(5, 6rem);
     grid-template-areas: 
-        "titleL authorL pagesL readL ."
+        "titleL authorL pagesL readL addB"
         "titleI authorI pagesI readI addB";
-    height: 10vh;
+    height: 5vh;
+    background-color: rgba(250, 199, 131, 0.6);
+    padding: 1rem 4rem;
+    border-radius: 1rem;
+    border-width: 0.3rem;
+    border-style: solid;
+    border-color:rgba(254, 168, 56, 0.416);
+    align-items: flex-end;
+    column-gap: 0.5rem;
 }
 label[for="title"] {
     grid-area: titleL;
@@ -39,9 +45,18 @@ label[for="pages"] {
 }
 label[for="read"] {
     grid-area: readL;
+    justify-self: center;
 }
 .add {
     grid-area: addB;
+    height: 100%;
+    background-color: rgba(192, 116, 16, 0.367);
+    border-radius: 0.5rem;
+    transition: all 0.1s ease-in;
+}
+.add:hover {
+    background-color: rgba(192, 116, 16, 0.675);
+    border-color: rgba(192, 116, 16, 0.675);
 }
 #title {
     grid-area: titleI;
@@ -58,12 +73,80 @@ label[for="read"] {
 
 .libraryContainer {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(10rem, 10rem));
+    grid-template-rows: repeat(auto-fit, minmax(12rem, 14rem));
     height:75vh;
     width: 100%;
     justify-items: center;
+    row-gap: 0.5rem;
 }
 .book {
-    background-color:grey;
-    width: min(40rem, 80%);
+    background-color:rgba(128, 128, 128, 0.35);
+    width: min(50rem, 80%);
+    border-radius: 1rem;
+    border-style: solid;
+    border-color: rgba(106, 26, 26, 0.428);
+    display: grid;
+    grid-template: 3fr 1fr / 1fr 1fr 1fr 5rem 5rem;
+    column-gap: 1rem;
+    padding: 1rem;
+    grid-template-areas: 
+        "title title title title title"
+        "author pages read edit delete";
+    justify-items: center;
+    align-items: center;
+    transition: all 0.1s ease-in;
+}
+.book:hover{
+    box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.553);
+    transform: scale(1.05);
+}
+
+.bookTitle {
+    font-size: 4rem;
+    grid-area: title;
+    margin: 0;
+}
+.bookAuthor {
+    grid-area: author;
+    margin: 0;
+    font-size: 1.5rem;
+}
+.bookPages {
+    grid-area: pages;
+    margin:0;
+    font-size: 1.5rem;
+}
+.bookRead {
+    grid-area: read;
+    margin:0;
+    font-size: 1.5rem;
+}
+.bookEdit {
+    grid-area: edit;
+}
+.bookDelete {
+    grid-area: delete;
+}
+.bookButton {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: rgba(112, 14, 14, 0.533);
+    transition: all 0.1s ease-in;
+}
+.bookButton:hover {
+    box-shadow: inset 0 0 0.1rem 0.1rem rgba(255, 255, 255, 0.637);
+    background-color: rgba(190, 6, 6, 0.796);
+    border-color:white;
+}
+h6 {
+    margin:0;
+    padding:0;
+    height: 100%;
+    font-size: 1.1rem;
+    height: auto;
+    color: white;
 }
