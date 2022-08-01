@@ -2,6 +2,10 @@ let library = [];
 let el;
 el = document.querySelector(".add");
 el.addEventListener("click", addBookToLibrary)
+let ex = new Book("title", "author", "5", true);
+library.push(ex);
+let a = document.querySelector(".bookEdit");
+a.addEventListener("click", editBook, {capture:true})
 
 function Book (title, author, pages, read){
     this.title = title;
@@ -21,14 +25,31 @@ function addBookToLibrary(e){
     library.push(book);
 }
 
+function editBook(e){
+    let book = e.target.parentElement.id;
+    let title, author, pages, read, editB;
+    title = document.querySelector("#title");
+    author = document.querySelector("#author");
+    pages = document.querySelector("#pages");
+    read = document.querySelector("#read");
+    editB = document.querySelector(".add");
+    console.log(book);
+    title.value = library[book].title;
+    author.value = library[book].author;
+    pages.value = library[book].pages;
+    read.value = library[book].read;
+    editB.textContent = "Edit";
+}
+
 function displatLibrary(){
     
 }
 
-function createBookElement(book){
+function createBookElement(book, i){
     let el;
     let item = document.createElement("div");
     item.classList.add("book");
+    item.id = i;
     el = document.createElement("h4");
     el.classList.add("bookTitle");
     el.textContent = book.title;
