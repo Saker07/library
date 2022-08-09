@@ -25,7 +25,7 @@ function addBookToLibrary(e){
     title = document.querySelector("#title").value;
     author = document.querySelector("#author").value;
     pages = document.querySelector("#pages").value;
-    read = document.querySelector("#read").value;
+    read = document.querySelector("#read").checked;
     book = new Book(title, author, pages, read);
     library.push(book);
     el.addEventListener("click", resetForm);
@@ -101,7 +101,7 @@ function createBookElement(book, i){
     item.appendChild(el);
     el = document.createElement("h5");
     el.classList.add("bookRead");
-    el.textContent = pages.read ? "Finished" : "Reading";
+    el.textContent = book.read ? "Finished" : "Reading";
     item.appendChild(el);
     el = document.createElement("button");
     el.classList.add("bookButton", "bookEdit");
