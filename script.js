@@ -32,7 +32,7 @@ function addBookToLibrary(e){
 }
 
 function editBook(e){
-    let book = e.target.parentElement.id;
+    let book = e.target.parentElement.closest("[data-key]").getAttribute("data-key");
     let title, author, pages, read, editB;
     title = document.querySelector("#title");
     author = document.querySelector("#author");
@@ -86,7 +86,7 @@ function createBookElement(book, i){
     let el, el2;
     let item = document.createElement("div");
     item.classList.add("book");
-    item.id = i;
+    item.setAttribute("data-key", i);
     el = document.createElement("h4");
     el.classList.add("bookTitle");
     el.textContent = book.title;
