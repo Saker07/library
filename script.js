@@ -43,10 +43,11 @@ function editBook(e){
     title.value = library[book].title;
     author.value = library[book].author;
     pages.value = library[book].pages;
-    read.value = library[book].read;
+    read.checked = library[book].read;
     editB.textContent = "Edit";
+    console.log(`Book index: ${book}`)
     editB.removeEventListener("click", addBookToLibrary);
-    editB.addEventListener("click", editBookToLibrary);
+    editB.addEventListener("click", e => editBookToLibrary(book));
 }
 function editBookToLibrary(i){
     let book;
@@ -56,13 +57,14 @@ function editBookToLibrary(i){
     title = document.querySelector("#title").value;
     author = document.querySelector("#author").value;
     pages = document.querySelector("#pages").value;
-    read = document.querySelector("#read").value;
+    read = document.querySelector("#read").checked;
     book = new Book(title, author, pages, read);
     library.splice(i, 1, book);
     editB.textContent = "Add";
     editB.removeEventListener("click", editBookToLibrary);
     editB.addEventListener("click",addBookToLibrary);
     displayLibrary();
+    resetForm();
 }
 function resetForm(){
     let em= document.querySelectorAll("form input");
