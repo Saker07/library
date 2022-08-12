@@ -2,7 +2,6 @@ let library = [];
 let el;
 el = document.querySelector(".add");
 el.addEventListener("click", addBookToLibrary);
-el.addEventListener("click", displayLibrary);
 
 /*  */
 let ex = new Book("title", "author", "5", true);
@@ -28,7 +27,8 @@ function addBookToLibrary(e){
     read = document.querySelector("#read").checked;
     book = new Book(title, author, pages, read);
     library.push(book);
-    el.addEventListener("click", resetForm);
+    displayLibrary();
+    resetForm();
 }
 
 function editBook(e){
@@ -60,8 +60,9 @@ function editBookToLibrary(i){
     book = new Book(title, author, pages, read);
     library.splice(i, 1, book);
     editB.textContent = "Add";
-    editB.removeEventListener("click", editBookToLibrary)
-    el.addEventListener("click", resetForm);
+    editB.removeEventListener("click", editBookToLibrary);
+    editB.addEventListener("click",addBookToLibrary);
+    displayLibrary();
 }
 function resetForm(){
     let em= document.querySelectorAll("form input");
