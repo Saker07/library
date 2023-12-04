@@ -14,17 +14,15 @@ body {
     height: 20vh;
 }
 .logoContainer img {
-    height: 20vh;
+    height: 100%;
 }
 
 form{
     font-size: 1.5rem;
     display: grid;
-    grid-template: 1fr 1fr / repeat(5, 6rem);
-    grid-template-areas: 
-        "titleL authorL pagesL readL addB"
-        "titleI authorI pagesI readI addB";
-    height: 5vh;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    max-width: min(30rem, 80%);
+    min-height: 5rem;
     background-color: rgba(250, 199, 131, 0.6);
     padding: 1rem 4rem;
     border-radius: 1rem;
@@ -34,21 +32,14 @@ form{
     align-items: flex-end;
     column-gap: 0.5rem;
 }
-label[for="title"] {
-    grid-area: titleL;
-}
-label[for="author"] {
-    grid-area: authorL;
-}
-label[for="pages"] {
-    grid-area: pagesL;
+.inputContainer {
+    display: flex;
+    flex-direction: column;
 }
 label[for="read"] {
-    grid-area: readL;
     justify-self: center;
 }
 .add {
-    grid-area: addB;
     height: 100%;
     background-color: rgba(192, 116, 16, 0.367);
     border-radius: 0.5rem;
@@ -57,18 +48,6 @@ label[for="read"] {
 .add:hover {
     background-color: rgba(192, 116, 16, 0.675);
     border-color: rgba(192, 116, 16, 0.675);
-}
-#title {
-    grid-area: titleI;
-}
-#author {
-    grid-area: authorI;
-}
-#pages {
-    grid-area: pagesI;
-}
-#read {
-    grid-area: readI;
 }
 
 .libraryContainer {
