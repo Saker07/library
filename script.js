@@ -19,7 +19,7 @@ class Book {
         this.resetBookForm();
     }
 
-    editBook(e){
+    static editBook(e){
         let book = e.target.parentElement.closest("[data-key]").getAttribute("data-key");
         let title, author, pages, read, editB;
         title = document.querySelector("#title");
@@ -35,9 +35,9 @@ class Book {
         editB.textContent = "Edit";
         console.log(`Book index: ${book}`)
         editB.removeEventListener("click", addBookToLibrary);
-        editB.addEventListener("click", e => editBookToLibrary(book));
+        editB.addEventListener("click", e => this.editBookToLibrary(book));
     }
-    editBookToLibrary(i){
+    static editBookToLibrary(i){
         let book;
         let title, author, pages, read;
         let editB;
@@ -48,15 +48,18 @@ class Book {
         read = document.querySelector("#read").checked;
         book = new Book(title, author, pages, read);
         library.splice(i, 1, book);
-        editB.textContent = "Add";
         editB.removeEventListener("click", editBookToLibrary);
-        editB.addEventListener("click",addBookToLibrary);
         displayLibrary();
         resetBookForm();
     }
     static resetBookForm(){
+        let editB = document.querySelector(".add");
+        editB.textContent = "Add";
+        editB.addEventListener("click", this.addBookToLibrary);
+        editB.replaceWith(editB.cloneNode());
         let em= document.querySelectorAll("form input");
-        em.forEach(elem => elem.value="")
+        em.forEach(elem => elem.value="");
+
     }
     static displayLibrary(){
         let cont, elem;
@@ -69,7 +72,7 @@ class Book {
             cont.appendChild(elem);
         }
         let a = document.querySelectorAll(".bookEdit");
-        a.forEach(elem => elem.addEventListener("click", editBook, {capture:true}));
+        a.forEach(elem => elem.addEventListener("click", this.editBook, {capture:true}));
     }
     static createBookElement(book, i){
         let el, el2;
