@@ -1,16 +1,3 @@
-let library = [];
-let el;
-el = document.querySelector(".add");
-el.addEventListener("click", addBookToLibrary);
-
-/*  */
-let ex = new Book("title", "author", "5", true);
-library.push(ex);
-/*  */
-let a = document.querySelectorAll(".bookEdit");
-a.forEach(elem => elem.addEventListener("click", Book.editBook, {capture:true}));
-
-
 class Book {
     constructor (title, author, pages, read){
         this.title = title;
@@ -19,7 +6,7 @@ class Book {
         this.read = read;
     }
 
-    addBookToLibrary(e){
+    static addBookToLibrary(library){
         let book;
         let title, author, pages, read;
         title = document.querySelector("#title").value;
@@ -122,3 +109,15 @@ class Book {
         return item;
     }
 }
+
+let library = [];
+let el;
+el = document.querySelector(".add");
+el.addEventListener("click", ()=>{Book.addBookToLibrary(library)});
+
+/*  */
+let ex = new Book("title", "author", "5", true);
+library.push(ex);
+/*  */
+let a = document.querySelectorAll(".bookEdit");
+a.forEach(elem => elem.addEventListener("click", Book.editBook, {capture:true}));
