@@ -76,40 +76,44 @@ class Book {
     }
     static createBookElement(book, i){
         let el, el2;
-        let item = document.createElement("div");
-        item.classList.add("book");
-        item.setAttribute("data-key", i);
+        let buttonContainer;
+        let containerDiv = document.createElement("div");
+        containerDiv.classList.add("book");
+        containerDiv.setAttribute("data-key", i);
         el = document.createElement("h4");
         el.classList.add("bookTitle");
         el.textContent = book.title;
-        item.appendChild(el);
+        containerDiv.appendChild(el);
         el = document.createElement("h5");
         el.classList.add("bookAuthor");
         el.textContent = book.author;
-        item.appendChild(el);
+        containerDiv.appendChild(el);
         el = document.createElement("h5");
         el.classList.add("bookPages");
         el.textContent = `Pages: ${book.pages}`;
-        item.appendChild(el);
+        containerDiv.appendChild(el);
         el = document.createElement("h5");
         el.classList.add("bookRead");
         el.textContent = book.read ? "Finished" : "Reading";
-        item.appendChild(el);
+        containerDiv.appendChild(el);
+        buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('bookButtonsContainer');
         el = document.createElement("button");
         el.classList.add("bookButton", "bookEdit");
         el.setAttribute("type", "button");
         el2 = document.createElement("h6")
         el2.textContent = "Edit";
         el.appendChild(el2);
-        item.appendChild(el);
+        buttonContainer.appendChild(el);
         el = document.createElement("button");
         el.classList.add("bookButton", "bookDelete");
         el.setAttribute("type", "button");
         el2 = document.createElement("h6")
         el2.textContent = "Delete";
         el.appendChild(el2);
-        item.appendChild(el);
-        return item;
+        buttonContainer.appendChild(el);
+        containerDiv.appendChild(buttonContainer);
+        return containerDiv;
     }
 }
 
