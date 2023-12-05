@@ -64,14 +64,14 @@ class Book {
         cont.innerHTML = "";
         console.log(cont);
         for(let i = 0; i<library.length; i++){
-            elem = createBookElement(library[i], i);
+            elem = this.createBookElement(library[i], i);
             console.log(elem);
             cont.appendChild(elem);
         }
         let a = document.querySelectorAll(".bookEdit");
         a.forEach(elem => elem.addEventListener("click", editBook, {capture:true}));
     }
-    createBookElement(book, i){
+    static createBookElement(book, i){
         let el, el2;
         let item = document.createElement("div");
         item.classList.add("book");
