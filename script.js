@@ -15,8 +15,8 @@ class Book {
         read = document.querySelector("#read").checked;
         book = new Book(title, author, pages, read);
         library.push(book);
-        displayLibrary();
-        resetForm();
+        this.displayLibrary();
+        this.resetBookForm();
     }
 
     editBook(e){
@@ -52,13 +52,13 @@ class Book {
         editB.removeEventListener("click", editBookToLibrary);
         editB.addEventListener("click",addBookToLibrary);
         displayLibrary();
-        resetForm();
+        resetBookForm();
     }
-    resetForm(){
+    static resetBookForm(){
         let em= document.querySelectorAll("form input");
         em.forEach(elem => elem.value="")
     }
-    displayLibrary(){
+    static displayLibrary(){
         let cont, elem;
         cont = document.querySelector(".libraryContainer");
         cont.innerHTML = "";
