@@ -53,13 +53,13 @@ class Book {
         resetBookForm();
     }
     static resetBookForm(){
-        let editB = document.querySelector(".add");
-        editB.textContent = "Add";
-        editB.addEventListener("click", this.addBookToLibrary);
-        editB.replaceWith(editB.cloneNode());
-        let em= document.querySelectorAll("form input");
+        let editButtonOld = document.querySelector(".add");
+        let editButtonNew = editButtonOld.cloneNode()
+        editButtonOld.replaceWith(editButtonNew);
+        editButtonNew.textContent = "Add";
+        editButtonNew.addEventListener("click", e=>{this.addBookToLibrary(library)});
+        let em = document.querySelectorAll("form input");
         em.forEach(elem => elem.value="");
-
     }
     static displayLibrary(){
         let cont, elem;
