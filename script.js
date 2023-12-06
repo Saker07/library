@@ -136,8 +136,7 @@ el.addEventListener("click", ()=>{Book.addBookToLibrary(library)});
 let ex = new Book("title", "author", "5", true);
 library.push(ex);
 /*  */
-let a = document.querySelectorAll(".bookEdit");
-a.forEach(elem => elem.addEventListener("click", Book.editBook, {capture:true}));
+Book.displayLibrary;
 
 function removeAllEventListeners(nodeElement){
     let newNode = nodeElement.cloneNode({deep: true});
