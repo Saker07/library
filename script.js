@@ -36,7 +36,7 @@ class Book {
         editB = removeAllEventListeners(editB);
         editB.textContent = "Edit";
         console.log(`Book index: ${book}`)
-        editB.addEventListener("click", function(e){this.editBookToLibrary(book)}.bind(Book));
+        editB.addEventListener("click", function(e){Book.editBookToLibrary(book)});
     }
     static editBookToLibrary(i){
         let book;
@@ -51,6 +51,12 @@ class Book {
         library.splice(i, 1, book);
         this.displayLibrary();
         this.resetBookForm();
+    }
+    static removeBook(bookIndex){
+        let removedBook = library.splice(bookIndex,1)[0];
+        this.displayLibrary();
+        this.resetBookForm();
+        return removedBook;
     }
     static resetBookForm(){
         let editButton = document.querySelector(".add");
@@ -70,8 +76,13 @@ class Book {
             console.log(elem);
             cont.appendChild(elem);
         }
-        let a = document.querySelectorAll(".bookEdit");
-        a.forEach(elem => elem.addEventListener("click", this.editBook, {capture:true}));
+        let bookEditButtons = document.querySelectorAll(".bookEdit");
+        bookEditButtons.forEach(elem => elem.addEventListener("click", this.editBook, {capture:true}));
+        let bookDeleteButtons = document.querySelectorAll(".bookDelete");
+        bookDeleteButtons.forEach(elem => elem.addEventListener("click", e=>{
+            let bookIndex = e.target.parentElement.closest("[data-key]").getAttribute("data-key");;
+            Book.removeBook(bookIndex);
+        }, {capture:true}));
     }
     static createBookElement(book, i){
         let el, el2;
