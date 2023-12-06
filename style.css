@@ -5,7 +5,7 @@
 body {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 1rem;
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
@@ -14,11 +14,19 @@ body {
     height: 100vh;
 }
 
-.logoContainer{
+.header{
     height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
 }
-.logoContainer img {
-    height: 100%;
+.header>* {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 10rem;
 }
 
 form{

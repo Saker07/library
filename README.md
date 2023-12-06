@@ -8,3 +8,7 @@ Todo:
 
     1. edit is not working, it just blanks the  item.
     2. after the edit add doesn't work anymore, only adds blanks.
+
+
+Credits:
+    Icon by SVG Repo (https://www.svgrepo.comSVG)
