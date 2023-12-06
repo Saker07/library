@@ -32,10 +32,11 @@ class Book {
         author.value = library[book].author;
         pages.value = library[book].pages;
         read.checked = library[book].read;
+        //remove all event listeners from node
+        editB = removeAllEventListeners(editB);
         editB.textContent = "Edit";
         console.log(`Book index: ${book}`)
-        editB.removeEventListener("click", addBookToLibrary);
-        editB.addEventListener("click", e => this.editBookToLibrary(book));
+        editB.addEventListener("click", function(e){this.editBookToLibrary(book)}.bind(Book));
     }
     static editBookToLibrary(i){
         let book;
@@ -48,16 +49,14 @@ class Book {
         read = document.querySelector("#read").checked;
         book = new Book(title, author, pages, read);
         library.splice(i, 1, book);
-        editB.removeEventListener("click", editBookToLibrary);
-        displayLibrary();
-        resetBookForm();
+        this.displayLibrary();
+        this.resetBookForm();
     }
     static resetBookForm(){
-        let editButtonOld = document.querySelector(".add");
-        let editButtonNew = editButtonOld.cloneNode()
-        editButtonOld.replaceWith(editButtonNew);
-        editButtonNew.textContent = "Add";
-        editButtonNew.addEventListener("click", e=>{this.addBookToLibrary(library)});
+        let editButton = document.querySelector(".add");
+        editButton = removeAllEventListeners(editButton);
+        editButton.textContent = "Add";
+        editButton.addEventListener("click", e=>{this.addBookToLibrary(library)});
         let em = document.querySelectorAll("form input");
         em.forEach(elem => elem.value="");
     }
@@ -128,3 +127,9 @@ library.push(ex);
 /*  */
 let a = document.querySelectorAll(".bookEdit");
 a.forEach(elem => elem.addEventListener("click", Book.editBook, {capture:true}));
+
+function removeAllEventListeners(nodeElement){
+    let newNode = nodeElement.cloneNode({deep: true});
+    nodeElement.replaceWith(newNode);
+    return newNode;
+}
