@@ -103,54 +103,50 @@ class Book {
     );
   }
   static createBookElement(book, i) {
-    let el, el2;
+    let parentElement, childElement;
     let buttonContainer;
     let containerDiv = document.createElement("div");
     containerDiv.classList.add("book");
     containerDiv.setAttribute("data-key", i);
-    el = document.createElement("h4");
-    el.classList.add("bookTitle");
-    el.textContent = book.title;
-    containerDiv.appendChild(el);
-    el = document.createElement("h5");
-    el.classList.add("bookAuthor");
-    el.textContent = book.author;
-    containerDiv.appendChild(el);
-    el = document.createElement("h5");
-    el.classList.add("bookPages");
-    el.textContent = `Pages: ${book.pages}`;
-    containerDiv.appendChild(el);
-    el = document.createElement("h5");
-    el.classList.add("bookRead");
-    el.textContent = book.read ? "Finished" : "Reading";
-    containerDiv.appendChild(el);
+    parentElement = document.createElement("h4");
+    parentElement.classList.add("bookTitle");
+    parentElement.textContent = book.title;
+    containerDiv.appendChild(parentElement);
+    parentElement = document.createElement("h5");
+    parentElement.classList.add("bookAuthor");
+    parentElement.textContent = book.author;
+    containerDiv.appendChild(parentElement);
+    parentElement = document.createElement("h5");
+    parentElement.classList.add("bookPages");
+    parentElement.textContent = `Pages: ${book.pages}`;
+    containerDiv.appendChild(parentElement);
+    parentElement = document.createElement("h5");
+    parentElement.classList.add("bookRead");
+    parentElement.textContent = book.read ? "Finished" : "Reading";
+    containerDiv.appendChild(parentElement);
     buttonContainer = document.createElement("div");
     buttonContainer.classList.add("bookButtonsContainer");
-    el = document.createElement("button");
-    el.classList.add("bookButton", "bookEdit");
-    el.setAttribute("type", "button");
-    el2 = document.createElement("h6");
-    el2.textContent = "Edit";
-    el.appendChild(el2);
-    buttonContainer.appendChild(el);
-    el = document.createElement("button");
-    el.classList.add("bookButton", "bookDelete");
-    el.setAttribute("type", "button");
-    el2 = document.createElement("h6");
-    el2.textContent = "Delete";
-    el.appendChild(el2);
-    buttonContainer.appendChild(el);
+    parentElement = document.createElement("button");
+    parentElement.classList.add("bookButton", "bookEdit");
+    parentElement.setAttribute("type", "button");
+    childElement = document.createElement("h6");
+    childElement.textContent = "Edit";
+    parentElement.appendChild(childElement);
+    buttonContainer.appendChild(parentElement);
+    parentElement = document.createElement("button");
+    parentElement.classList.add("bookButton", "bookDelete");
+    parentElement.setAttribute("type", "button");
+    childElement = document.createElement("h6");
+    childElement.textContent = "Delete";
+    parentElement.appendChild(childElement);
+    buttonContainer.appendChild(parentElement);
     containerDiv.appendChild(buttonContainer);
     return containerDiv;
   }
 }
 
 let library = JSON.parse(localStorage.getItem("library"));
-let el;
-el = document.querySelector(".add");
-el.addEventListener("click", () => {
-  Book.addBookToLibrary(library);
-});
+Book.resetBookForm();
 
 /*  */
 if (!library) {
