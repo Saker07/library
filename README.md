@@ -1,14 +1,15 @@
 # library
 
-Todo:
-    FIXED?id cannot be just numbers, it creates problems with the css selectors, rather than taht use the data attribute.
-    edit not working properly, if you edit it does get the details of the book, but once you apply it doesn't work, it actually deleted it? or overwrites it with blank? actually the add stops working after using the edit? wtf
-    delete book function
-    
+A library website, you can add books with a title, an author, a number of pages, and set wether the book is read or not.
+It stores the library array in local storage, it does not have any TTL.
+It is written in plain javascript, so if you want to use it, just clone the repository and open index.html.
+It does not have any media queries as they were not necessary, but it is still responsive to most displays.
 
-    1. edit is not working, it just blanks the  item.
-    2. after the edit add doesn't work anymore, only adds blanks.
+Example for a laptop:
+![Example image of the website in a laptop screen](./img/exampleLaptop.png "Example laptop")
 
+Example for a smartphone:
+![Example image of the website in a smartphone screen](./img/exampleMobile.png "Example mobile")
 
 Credits:
-    Icon by SVG Repo (https://www.svgrepo.comSVG)
+Icon by SVG Repo (https://www.svgrepo.comSVG)

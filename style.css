@@ -86,21 +86,23 @@ label[for="read"] {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 .book:hover{
     box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.553);
     transform: scale(1.05);
 }
 .bookTitle {
-    font-size: 4rem;
+    font-size: 2rem;
+    font-weight: bold;
     width: 100%;
 }
 .bookAuthor {
     width: 100%;
 }
 .book h5 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
 }
 .bookButtonsContainer {
     width: 100%;
